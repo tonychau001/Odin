@@ -1,0 +1,64 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A Basic HTML5 Template</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <div id="container"></div>
+
+    <button onclick="alert('Hello World')">Click Me</button>
+
+    <!-- the HTML file -->
+    <button id="btn">Click Me Too</button>
+
+    <button id="btn3">Click Me Three</button>
+
+    <script>
+        const div = document.querySelector("#container");
+
+        const pp = document.createElement("p");
+        pp.style.color = "red";
+        pp.textContent = "Hey I’m red!";
+
+        const h3 = document.createElement("h3");
+        h3.style.color = "blue";
+        h3.textContent = "I’m a blue h3!";
+
+        const div2 = document.createElement("div");
+        div2.setAttribute("style", "border: 1px solid #000; background: pink;");
+
+        const p1 = document.createElement("p");
+        p1.style.color = "black";
+        p1.textContent = "I'm in a div!";
+
+        const h1 = document.createElement("h1");
+        h1.style.color = "black";
+        h1.textContent = "Me too!";
+
+        div2.appendChild(p1);
+        div2.appendChild(h1);
+
+        div.appendChild(pp);
+        div.appendChild(h3);
+        div.appendChild(div2);
+        
+        // the JavaScript file
+        const btn = document.querySelector("#btn");
+        btn.onclick = () => alert("Hello World2");
+
+        function alertFunction() {
+           alert("YAY! YOU DID IT!");
+           e.target.style.background = "blue";
+        }
+        const btn3 = document.querySelector("#btn3");
+        btn3.addEventListener("click", function (e) {
+            e.target.style.background = "blue";
+            });
+    </script>
+</body>
+</html>

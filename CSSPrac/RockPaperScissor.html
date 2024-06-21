@@ -1,0 +1,74 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A Basic HTML5 Template</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <div id="score" class="score">Score</div>
+    <script>
+        console.log("Hello world!");
+
+        let humanScore = 0;
+        let compScore = 0;
+        let txt = document.querySelector("div.score")
+
+        for(let i = 0; i < 5; i++) {
+            let randomComputerChoice = () => {
+                let num = Math.random();
+                if(num < 0.33) {
+                    return "rock";
+                } else if (num < 0.66) {
+                    return "paper";
+                } else {
+                    return "scissors";
+                }
+            };
+
+            let getHumanChoice = prompt("What is your choice?");
+            let getComputerChoice = randomComputerChoice();
+
+            let playRound = (getHumanChoice, getComputerChoice) => {
+                console.log(getHumanChoice + " vs. " + getComputerChoice);
+                if(getHumanChoice.toLowerCase() == getComputerChoice.toLowerCase()) {
+                    console.log("You tied!")
+                } else if (getHumanChoice.toLowerCase() == "rock") {
+                    if(getComputerChoice.toLowerCase() == "paper") {
+                        compScore++;
+                        console.log("You lose!");
+                    } else {
+                        humanScore++;
+                        console.log("You win!");
+                    }
+                } else if (getHumanChoice.toLowerCase() == "paper") {
+                    if(getComputerChoice.toLowerCase() == "scissors") {
+                        compScore++;
+                        console.log("You lose!");
+                    } else {
+                        humanScore++;
+                        console.log("You win!");
+                    }
+                } else if (getHumanChoice.toLowerCase() == "scissors") {
+                    if(getComputerChoice.toLowerCase() == "rock") {
+                        compScore++;
+                        console.log("You lose!");
+                    } else {
+                        humanScore++;
+                        console.log("You win!");
+                    }
+                }
+                
+            };
+
+            playRound(getHumanChoice, getComputerChoice);
+            console.log(`Score: Human ${humanScore}: Comp ${compScore}`);
+            txt.textContent = `Score: Human ${humanScore} - Comp ${compScore}`;
+        }
+        console.log(`FINAL Score: Human ${humanScore} - Comp ${compScore}`);
+    </script>
+</body>
+</html>
