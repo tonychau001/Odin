@@ -10,64 +10,72 @@
 
 <body>
     <div id="score" class="score">Score</div>
+
+    <div id ="buttons">
+        <button id="rockBtn">rock</button>
+        <button id="paperBtn">paper</button>
+        <button id="scissorsBtn">scissors</button>
+    </div>
+
     <script>
         console.log("Hello world!");
+        const buttons = document.querySelectorAll("button");
 
         let humanScore = 0;
         let compScore = 0;
         let txt = document.querySelector("div.score")
 
-        for(let i = 0; i < 5; i++) {
-            let randomComputerChoice = () => {
-                let num = Math.random();
-                if(num < 0.33) {
-                    return "rock";
-                } else if (num < 0.66) {
-                    return "paper";
+        let playRound = (getHumanChoice, getComputerChoice) => {
+            console.log(getHumanChoice + " vs. " + getComputerChoice);
+            if(getHumanChoice.toLowerCase() == getComputerChoice.toLowerCase()) {
+                console.log("You tied!")
+            } else if (getHumanChoice.toLowerCase() == "rock") {
+                if(getComputerChoice.toLowerCase() == "paper") {
+                    compScore++;
+                    console.log("You lose!");
                 } else {
-                    return "scissors";
+                    humanScore++;
+                    console.log("You win!");
                 }
-            };
-
-            let getHumanChoice = prompt("What is your choice?");
-            let getComputerChoice = randomComputerChoice();
-
-            let playRound = (getHumanChoice, getComputerChoice) => {
-                console.log(getHumanChoice + " vs. " + getComputerChoice);
-                if(getHumanChoice.toLowerCase() == getComputerChoice.toLowerCase()) {
-                    console.log("You tied!")
-                } else if (getHumanChoice.toLowerCase() == "rock") {
-                    if(getComputerChoice.toLowerCase() == "paper") {
-                        compScore++;
-                        console.log("You lose!");
-                    } else {
-                        humanScore++;
-                        console.log("You win!");
-                    }
-                } else if (getHumanChoice.toLowerCase() == "paper") {
-                    if(getComputerChoice.toLowerCase() == "scissors") {
-                        compScore++;
-                        console.log("You lose!");
-                    } else {
-                        humanScore++;
-                        console.log("You win!");
-                    }
-                } else if (getHumanChoice.toLowerCase() == "scissors") {
-                    if(getComputerChoice.toLowerCase() == "rock") {
-                        compScore++;
-                        console.log("You lose!");
-                    } else {
-                        humanScore++;
-                        console.log("You win!");
-                    }
+            } else if (getHumanChoice.toLowerCase() == "paper") {
+                if(getComputerChoice.toLowerCase() == "scissors") {
+                    compScore++;
+                    console.log("You lose!");
+                } else {
+                    humanScore++;
+                    console.log("You win!");
                 }
+            } else if (getHumanChoice.toLowerCase() == "scissors") {
+                if(getComputerChoice.toLowerCase() == "rock") {
+                    compScore++;
+                    console.log("You lose!");
+                } else {
+                    humanScore++;
+                    console.log("You win!");
+                }
+            }
+        };
+
+        let randomComputerChoice = () => {
+            let num = Math.random();
+            if(num < 0.33) {
+                return "rock";
+            } else if (num < 0.66) {
+                return "paper";
+            } else {
+                return "scissors";
+            }
+        };  
+
+        buttons.forEach((button) => {
+            button.addEventListener("click", () => {
+                let getHumanChoice = button.textContent;
+                let getComputerChoice = randomComputerChoice();
                 
-            };
-
-            playRound(getHumanChoice, getComputerChoice);
-            console.log(`Score: Human ${humanScore}: Comp ${compScore}`);
-            txt.textContent = `Score: Human ${humanScore} - Comp ${compScore}`;
-        }
+                playRound(getHumanChoice, getComputerChoice);
+                txt.textContent = `Score: Human ${humanScore}: Comp ${compScore}`;
+            });
+        });
         console.log(`FINAL Score: Human ${humanScore} - Comp ${compScore}`);
     </script>
 </body>
