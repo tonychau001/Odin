@@ -1,0 +1,9 @@
+.numbers {
+    display: flex;
+}
+
+.number {
+    margin: 2px;
+    padding: 10px;
+    flex-wrap: wrap;
+}
