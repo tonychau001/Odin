@@ -5,17 +5,9 @@
 .square2 {
     background: #6ab6d8;
     padding: 10px;
-    /* margin-bottom: 10px; */
-    border: 1px solid #2e86bb;
-    color: white;
-    font-size: 14px;
-    text-align: center;
-    position: relative;
+    /* border: 1px solid #2e86bb; */
 }
 
 .square2:hover {
     background: red;
-    padding: 10px;
-    /* margin-bottom: 10px; */
-    border: 1px solid red;
 }

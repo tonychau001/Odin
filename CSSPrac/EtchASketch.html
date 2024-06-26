@@ -10,6 +10,13 @@
 </head>
 
 <body>
+    <form name="num" action="javascript:handleSubmit(this.form.numId.value)">
+        <label for="num">How many squares? (Max 100)</label><br>
+        <input type="num" id="numId" name="numId" value="64"><br>
+        <input type="button" value="Submit" onclick="handleSubmit(this.form.numId.value)"><br>
+      </form>
     <div id="container"></div>
+
+    <button id="btn">CLEAR</button>
 </body>
 </html>
